@@ -36,7 +36,7 @@ const ResumeBuilder = () => {
     certifications: [],
     achievements: [],
     template: 'classic',
-    accent_color: '#3B82F6',
+    accent_color: '#000000',
     public: false,
   })
   const [activeSectionIdx, setActiveSectionIdx] = useState(0)

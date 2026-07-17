@@ -1,13 +1,13 @@
 import React from 'react'
 import ModernTemplate from './templates/ModernTemplate'
 import ClassicTemplate from './templates/ClassicTemplate'
-import MinimalTemplate from './templates/MinimalTemplate'
+import MinimalTemplate from './templates/MinimalTemplate.jsx'
 import MinimalImageTemplate from './templates/MinimalImageTemplate'
 
 const templateRegistry = {
-  classic: ClassicTemplate,
-  modern: ModernTemplate,
-  minimal: MinimalTemplate,
+  'classic': ClassicTemplate,
+  'modern': ModernTemplate,
+  'minimal': MinimalTemplate,
   'minimal-image': MinimalImageTemplate,
 }
 

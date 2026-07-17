@@ -58,14 +58,14 @@ const EducationForm = ({ data, onChange }) => {
 
                             {/* Input for Education Details */}
                             <div className='grid md:grid-cols-2 gap-3 mb-1'>
-                                <input type="text" value={education.institution || ""} onChange={(e) => updateEducation(index, 'institute', e.target.value)}
+                                <input type="text" value={education.institution || ""} onChange={(e) => updateEducation(index, 'institution', e.target.value)}
                                     placeholder='Institute Name' className='px-3 py-2 text-sm rounded-lg' />
                                 <input type="text" value={education.degree || ""} onChange={(e) => updateEducation(index, 'degree', e.target.value)}
                                     placeholder='Degree' className='px-3 py-2 text-sm rounded-lg' />
-                                <input type="text" value={education.field_of_study || ""} onChange={(e) => updateEducation(index, 'field', e.target.value)}
+                                <input type="text" value={education.field_of_study || ""} onChange={(e) => updateEducation(index, 'field_of_study', e.target.value)}
                                     placeholder='Field of Study' className='px-3 py-2 text-sm rounded-lg' />
                                 <input type="number" step="0.01" min="0" max="10" value={education.score || ""} className='px-3 py-2 text-sm rounded-lg'
-                                    onChange={(e) => updateEducation(index, 'score', e.target.value)} placeholder='GPA' />
+                                    onChange={(e) => updateEducation(index, 'score', e.target.value)} placeholder='Score' />
                                 <input type="month" value={education.start_date || ""} onChange={(e) => updateEducation(index, 'start_date', e.target.value)}
                                     onFocus={(e) => e.target.showPicker?.()}
                                     className='px-3 py-2 text-sm rounded-lg cursor-pointer' />
