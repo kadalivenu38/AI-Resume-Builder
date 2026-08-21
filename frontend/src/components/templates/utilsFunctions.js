@@ -18,7 +18,7 @@ export const hasArrayData = (arr) => {
 export const formatDate = (date) => {
   if (!date) return "";
 
-  const [month, year] = date.split("-");
+  const [year, month] = date.split("-");
 
   return new Date(year, month - 1).toLocaleString("en-US", {
     month: "short",

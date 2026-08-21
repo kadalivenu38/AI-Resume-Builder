@@ -57,7 +57,7 @@ export const getResumeById = async (req, res) => {
 export const getResumeToView = async (req, res) => {
   try {
     const { resumeId } = req.params;
-    const resume = await Resume.findOne({ _id: resumeId, isPublic: true });
+    const resume = await Resume.findOne({ _id: resumeId, public: true });
 
     if (!resume) {
       return res.status(404).json({ message: "Resume not found" });

@@ -110,7 +110,7 @@ const ModernTemplate = ({ data, accentColor }) => {
 			<h2 className="uppercase text-[15px] font-bold tracking-[0.25em] whitespace-nowrap" style={{ color: accentColor }}>
 				{title}
 			</h2>
-			<div className="flex-1 h-px" style={{ backgroundColor: accentColor }} />
+			<div className="flex-1 border-t" style={{ borderColor: accentColor }} />
 		</div>
 	);
 
@@ -140,7 +140,7 @@ const ModernTemplate = ({ data, accentColor }) => {
 					</div>
 
 					{/* Accent Divider */}
-					<div className="my-1 h-0.5 w-full" style={{ backgroundColor: accentColor }} />
+					<div className="my-1 w-full border-t-2" style={{ borderColor: accentColor }}/>
 
 					{/* Contact */}
 					{(hasValue(data.personal_info?.email) ||
@@ -255,7 +255,7 @@ const ModernTemplate = ({ data, accentColor }) => {
 											)}
 										</div>
 										{hasValue(project.link) && (
-											<a href={project.link} target="_blank" rel="noopener noreferrer"
+											<a href={project.link} target="_blank"
 												className="text-[13px] whitespace-nowrap hover:underline" style={{ color: accentColor }}>
 												{getProjectLinkLabel(project.link)}
 											</a>

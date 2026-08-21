@@ -238,18 +238,13 @@ const ClassicTemplate = ({ data, accentColor }) => {
                                             </p>
                                         )}
                                     </div>
-                                    {(() => {
-                                        const dateRange = renderDateRange(
+                                    <span className="text-[12px] whitespace-nowrap text-gray-500">
+                                        {renderDateRange(
                                             edu.start_date,
                                             edu.graduation_date,
                                             edu.is_current
-                                        );
-                                        return dateRange ? (
-                                            <span className="text-[13px] text-gray-600 whitespace-nowrap">
-                                                {dateRange}
-                                            </span>
-                                        ) : null;
-                                    })()}
+                                        )}
+                                    </span>
                                 </div>
                             </div>
                         ))}

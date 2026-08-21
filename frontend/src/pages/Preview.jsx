@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { dummyResumeData } from '../assets/assets'
 import ResumePreview from '../components/ResumePreview'
 import Loader from '../components/Loader'
+import api from '../configs/api'
 
 const Preview = () => {
   const { resumeId } = useParams()
@@ -10,8 +10,14 @@ const Preview = () => {
   const [loading, setLoading] = useState(true)
 
   const loadResume = async () => {
-    setResumeData(dummyResumeData.find(resume => resume._id === resumeId) || null)
-    setLoading(false)
+    try {
+      const { data } = await api.get('/api/resume/view/' + resumeId);
+      setResumeData(data.resume)
+    } catch (err) {
+      console.log(err.message);
+    } finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {

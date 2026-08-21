@@ -78,13 +78,18 @@ const ProjectForm = ({ data, onChange }) => {
               </div>
 
               {/*Input for Project Details */}
-              <div className='grid md:grid-cols-2 gap-3 mb-1'>
+              <div className='grid md:grid-cols-2 gap-3'>
                 <input type="text" value={project.name || ""} onChange={(e) => updateProject(index, 'name', e.target.value)}
                   placeholder='Project Name' className='px-3 py-2 text-sm rounded-lg' />
                 <input type="text" value={project.tech_stack || ""} onChange={(e) => updateProject(index, 'tech_stack', e.target.value)}
                   placeholder='Tech Stack' className='px-3 py-2 text-sm rounded-lg' maxLength={75} />
               </div>
-              <div className='space-y-3 mt-5'>
+              <div className='grid md:grid-cols-1'>
+                <input type='url' value={project.link || ''} onChange={(e) => updateProject(index, 'link', e.target.value)}
+                  placeholder='Project Link' className='px-3 py-2 text-sm rounded-lg'
+                />
+              </div>
+              <div className='space-y-3 mt-3'>
                 <div className='flex items-center justify-between'>
                   <label className='text-sm font-medium text-gray-700'>Project Description</label>
                   <button onClick={() => enhanceDescription(index)} disabled={generatingIdx === index || !project.name || !project.description} className='flex items-center gap-1
