@@ -55,12 +55,15 @@ const Login = () => {
 
         <div className="flex items-center w-full mt-4 bg-gray-800 border border-gray-700 h-12 rounded-full overflow-hidden pl-6 gap-2 ">
           <Mail size={16} color='#6B7280' />
-          <input type="email" name="email" placeholder="Email id" className="w-full bg-transparent text-white placeholder-gray-400 border-none outline-none " value={formData.email} onChange={handleChange} required />
+          <input type="email" name="email" placeholder="Email id" autoComplete="username" value={formData.email} onChange={handleChange} required
+          className="w-full bg-transparent text-white placeholder-gray-400 border-none outline-none" />
         </div>
 
         <div className=" flex items-center mt-4 w-full bg-gray-800 border border-gray-700 h-12 rounded-full overflow-hidden pl-6 gap-2 ">
           <Lock size={16} color='#6B7280' />
-          <input type="password" name="password" placeholder="Password" className="w-full bg-transparent text-white placeholder-gray-400 border-none outline-none" value={formData.password} onChange={handleChange} required />
+          <input type="password" name="password" placeholder="Password" autoComplete={state === "login" ? "current-password" : "new-password"}
+          className="w-full bg-transparent text-white placeholder-gray-400 border-none outline-none"
+           value={formData.password} onChange={handleChange} required />
         </div>
 
         <div className="mt-4 text-left">
