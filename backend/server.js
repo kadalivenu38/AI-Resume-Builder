@@ -35,22 +35,26 @@ const apiLimiter = rateLimit({
 
 app.use(apiLimiter);
 
-app.get("/", async (req, res) => {
+// Ensure MongoDB is connected before API routes execute
+app.use(async (req, res, next) => {
   try {
     await dbConn();
-
-    res.status(200).json({
-      success: true,
-      message: "Resume Builder API is running",
-    });
+    next();
   } catch (error) {
-    console.error("Database connection error:", error);
+    console.error("Database connection error:", error.message);
 
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: "Database connection failed",
     });
   }
+});
+
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Resume Builder API is running",
+  });
 });
 
 app.use("/api/user", userRouter);
@@ -58,7 +62,9 @@ app.use("/api/resume", resumeRouter);
 app.use("/api/ai", aiRouter);
 
 const PORT = process.env.PORT || 4000;
+
 app.listen(PORT, () => {
   console.log(`Server running on PORT: ${PORT}`);
 });
+
 export default app;

@@ -1,30 +1,32 @@
 import mongoose from "mongoose";
 
+let isConnected = false;
+
 const dbConn = async () => {
+  if (isConnected && mongoose.connection.readyState === 1) {
+    return mongoose.connection;
+  }
+
+  if (!process.env.MONGODB_URI) {
+    throw new Error("MONGODB_URI is not defined");
+  }
+
   try {
-    if (!process.env.MONGODB_URI) {
-      throw new Error("MONGODB_URI is not defined");
-    }
+    const connection = await mongoose.connect(process.env.MONGODB_URI);
 
-    await mongoose.connect(process.env.MONGODB_URI);
-    console.log(`MongoDB Connected: ${mongoose.connection.host}/${mongoose.connection.name}`);
+    isConnected = connection.connections[0].readyState === 1;
 
-    mongoose.connection.on("error", (err) => {
-      console.error("MongoDB Error:", err.message);
-    });
+    console.log(
+      `MongoDB Connected: ${connection.connection.host}/${connection.connection.name}`,
+    );
 
-    mongoose.connection.on("disconnected", () => {
-      console.warn("MongoDB disconnected");
-    });
-
-    process.on("SIGINT", async () => {
-      await mongoose.connection.close();
-      console.log("MongoDB connection closed");
-      process.exit(0);
-    });
+    return connection;
   } catch (err) {
+    isConnected = false;
+
     console.error("MongoDB connection failed:", err.message);
-    process.exit(1);
+
+    throw err;
   }
 };
 
