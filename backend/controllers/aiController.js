@@ -1,5 +1,6 @@
 import openai from "../config/openai.js";
 import Resume from "../models/Resume.js";
+import "pdf-parse/worker";
 import { PDFParse } from "pdf-parse";
 import mammoth from "mammoth";
 
